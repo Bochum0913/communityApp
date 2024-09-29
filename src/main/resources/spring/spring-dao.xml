@@ -8,7 +8,8 @@
 
 	<!-- 配置整合mybatis过程 -->
 	<!-- 1.配置数据库相关参数properties的属性：${url} -->
-	<bean class="ca.bytetube.communityApp.util.EncryptPropertyPlaceholderConfigurer">
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!--
 		<property name="locations">
 			<list>
 				<value>classpath:jdbc.properties</value>
@@ -16,7 +17,7 @@
 			</list>
 		</property>
 		<property name="fileEncoding" value="UTF-8" />
-	</bean>
+	</bean>-->
 
 	<!-- 2.数据库连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
