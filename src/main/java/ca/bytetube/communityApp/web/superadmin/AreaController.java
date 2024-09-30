@@ -1,4 +1,4 @@
-package ca.bytetube.communityApp.web.supperadmin;
+package ca.bytetube.communityApp.web.superadmin;
 
 import ca.bytetube.communityApp.entity.Area;
 import ca.bytetube.communityApp.service.AreaService;
