@@ -92,7 +92,7 @@ public class ShopManagementController {
 		}
 		return modelMap;
 	}
-
+*/
 	@RequestMapping(value = "/modifyshop", method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String, Object> modifyShop(HttpServletRequest request) {
@@ -174,7 +174,7 @@ public class ShopManagementController {
 		}
 		return modelMap;
 	}
-*/
+
 
 	@RequestMapping(value = "/getshopinitinfo", method = RequestMethod.GET)
 	@ResponseBody
@@ -231,10 +231,10 @@ public class ShopManagementController {
 		// 2.注册店铺
 		if (shop != null && shopImg != null) {
 			//前端数据不可靠，不通过ownerId得到owner，而从session中获取（如果用户登录了，session中会有user信息）
-			//PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
+			PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
 
-			PersonInfo owner = new PersonInfo();
-			owner.setUserId(1L);
+			//PersonInfo owner = new PersonInfo();
+			//owner.setUserId(1L);
 			shop.setOwner(owner);
 			ShopExecution se;
 			try {
