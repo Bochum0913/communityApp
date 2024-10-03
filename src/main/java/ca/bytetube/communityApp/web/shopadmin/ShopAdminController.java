@@ -15,13 +15,13 @@ public class ShopAdminController {
 	private String productCategoryManage() {
 		// 转发至商品类别管理页面
 		return "shop/productcategorymanagement";
-	}
+	}*/
 
 	@RequestMapping(value = "/shopmanagement")
 	public String shopManagement() {
 		// 转发至店铺管理页面
 		return "shop/shopmanagement";
-	}*/
+	}
 
 	@RequestMapping(value = "/shopoperation")
 	public String shopOperation() {
