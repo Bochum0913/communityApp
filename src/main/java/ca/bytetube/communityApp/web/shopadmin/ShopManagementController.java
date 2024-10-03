@@ -40,7 +40,7 @@ public class ShopManagementController {
 	@Autowired
 	private AreaService areaService;
 
-	/*@RequestMapping(value = "/getshopmanagementinfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/getshopmanagementinfo", method = RequestMethod.GET)
 	@ResponseBody
 	//当不经过店铺列表，直接访问这个页面时，则重定向到shoplist中，如果之前有登录信息，则正常访问页面
 	private Map<String, Object> getShopManagementInfo(HttpServletRequest request) {
@@ -72,11 +72,11 @@ public class ShopManagementController {
 		Map<String, Object> modelMap = new HashMap<>();
 
 //		//todo 由于目前没有实现login，所以先设定默认值
-//		PersonInfo user = new PersonInfo();
-//		user.setUserId(1L);
-//		user.setName("test");
-//		request.getSession().setAttribute("user",user);
-		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+		PersonInfo user = new PersonInfo();
+		user.setUserId(1L);
+		user.setName("test");
+		request.getSession().setAttribute("user",user);
+		user = (PersonInfo) request.getSession().getAttribute("user");
 		try {
 			Shop shopCondition = new Shop();
 			shopCondition.setOwner(user);
@@ -92,7 +92,6 @@ public class ShopManagementController {
 		}
 		return modelMap;
 	}
-*/
 	@RequestMapping(value = "/modifyshop", method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String, Object> modifyShop(HttpServletRequest request) {
