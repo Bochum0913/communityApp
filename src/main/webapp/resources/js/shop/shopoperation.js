@@ -4,11 +4,11 @@
 $(function() {
 
 	// 从URL里获取shopId参数的值
-	//var shopId = getQueryString('shopId');
+	var shopId = getQueryString('shopId');
 
 	// 由于店铺注册和编辑使用的是同一个页面，
 	// 该标识符用来标明本次是添加还是编辑操作
-	//var isEdit = shopId ? true : false;
+	var isEdit = shopId ? true : false;
 
 	// 用于店铺注册时候的店铺类别以及区域列表的初始化的URL
 	var initUrl = '/communityApp/shopadmin/getshopinitinfo';
@@ -16,20 +16,18 @@ $(function() {
 	// 注册店铺的URL
 	var registerShopUrl = '/communityApp/shopadmin/registershop';
 
-	//alert(initUrl);
-	getShopInitInfo();
 
 	// 编辑店铺前需要获取店铺信息，这里为获取当前店铺信息的URL
-	//var shopInfoUrl = "/communityApp/shopadmin/getshopbyid?shopId=" + shopId;
+	var shopInfoUrl = "/communityApp/shopadmin/getshopbyid?shopId=" + shopId;
 
 	// 编辑店铺信息的URL
-	//var editShopUrl = '/communityApp/shopadmin/modifyshop';
+	var editShopUrl = '/communityApp/shopadmin/modifyshop';
 
-	/*if (!isEdit) {
+	if (!isEdit) {
 		getShopInitInfo();
 	} else {
 		getShopInfo(shopId);
-	}*/
+	}
 
 	// 通过店铺Id获取店铺信息
 	function getShopInfo(shopId) {
@@ -87,6 +85,11 @@ $(function() {
 		// 创建shop对象
 		var shop = {};
 
+		if (isEdit) {
+			// 若属于编辑，则给shopId赋值
+			shop.shopId = shopId;
+		}
+
 		// 获取表单里的数据并填充进对应的店铺属性中
 		shop.shopName = $('#shop-name').val();
 		shop.shopAddr = $('#shop-addr').val();
@@ -123,7 +126,7 @@ $(function() {
 
 		// 将数据提交至后台处理相关操作
 		$.ajax({
-			url : registerShopUrl,
+			url : (isEdit ? editShopUrl : registerShopUrl),
 			type : 'POST',
 			data : formData,
 			contentType : false,
