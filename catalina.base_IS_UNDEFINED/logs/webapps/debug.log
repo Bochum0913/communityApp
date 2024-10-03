@@ -1,0 +1,3 @@
+2024-10-02 18:08:37.339 [main] DEBUG c.b.c.dao.ShopCategoryDao.queryShopCategory - ==>  Preparing: SELECT shop_category_id, shop_category_name, shop_category_desc, shop_category_img, priority, create_time, last_edit_time, parent_id FROM tb_shop_category WHERE parent_id is null ORDER BY priority DESC 
+2024-10-02 18:08:37.372 [main] DEBUG c.b.c.dao.ShopCategoryDao.queryShopCategory - ==> Parameters: 
+2024-10-02 18:08:37.404 [main] DEBUG c.b.c.dao.ShopCategoryDao.queryShopCategory - <==      Total: 8

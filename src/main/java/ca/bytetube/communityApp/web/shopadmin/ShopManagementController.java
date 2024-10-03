@@ -2,11 +2,16 @@ package ca.bytetube.communityApp.web.shopadmin;
 
 import ca.bytetube.communityApp.dto.ImageHolder;
 import ca.bytetube.communityApp.dto.ShopExecution;
+import ca.bytetube.communityApp.entity.Area;
 import ca.bytetube.communityApp.entity.PersonInfo;
 import ca.bytetube.communityApp.entity.Shop;
+import ca.bytetube.communityApp.entity.ShopCategory;
 import ca.bytetube.communityApp.enums.ShopStateEnum;
 import ca.bytetube.communityApp.exceptions.ShopOperationException;
+import ca.bytetube.communityApp.service.AreaService;
+import ca.bytetube.communityApp.service.ShopCategoryService;
 import ca.bytetube.communityApp.service.ShopService;
+import ca.bytetube.communityApp.util.CodeUtil;
 import ca.bytetube.communityApp.util.HttpServletRequestUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +35,10 @@ import java.util.Map;
 public class ShopManagementController {
 	@Autowired
 	private ShopService shopService;
-	/*@Autowired
+	@Autowired
 	private ShopCategoryService shopCategoryService;
 	@Autowired
-	private AreaService areaService;*/
+	private AreaService areaService;
 
 	/*@RequestMapping(value = "/getshopmanagementinfo", method = RequestMethod.GET)
 	@ResponseBody
@@ -169,7 +174,7 @@ public class ShopManagementController {
 		}
 		return modelMap;
 	}
-
+*/
 
 	@RequestMapping(value = "/getshopinitinfo", method = RequestMethod.GET)
 	@ResponseBody
@@ -189,17 +194,17 @@ public class ShopManagementController {
 		}
 		return modelMap;
 	}
-*/
+
 	@RequestMapping(value = "/registershop", method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String, Object> registerShop(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 
-		/*if (!CodeUtil.checkVerifyCode(request)) {
+		if (!CodeUtil.checkVerifyCode(request)) {
 			modelMap.put("success", false);
 			modelMap.put("errMsg", "error verify Code ");
 			return modelMap;
-		}*/
+		}
 
 		// 1.接收并转化相应的参数，包括店铺信息以及图片信息
 		String shopStr = HttpServletRequestUtil.getString(request, "shopStr");
@@ -226,9 +231,10 @@ public class ShopManagementController {
 		// 2.注册店铺
 		if (shop != null && shopImg != null) {
 			//前端数据不可靠，不通过ownerId得到owner，而从session中获取（如果用户登录了，session中会有user信息）
-			PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
-//			PersonInfo owner = new PersonInfo();
-//			owner.setUserId(1L);
+			//PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
+
+			PersonInfo owner = new PersonInfo();
+			owner.setUserId(1L);
 			shop.setOwner(owner);
 			ShopExecution se;
 			try {

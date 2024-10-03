@@ -141,8 +141,7 @@
       <artifactId>thumbnailator</artifactId>
       <version>0.4.8</version>
     </dependency>
-    <!--
-        &lt;!&ndash; https://mvnrepository.com/artifact/com.github.penggle/kaptcha &ndash;&gt;
+        <!-- https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
         <dependency>
           <groupId>com.github.penggle</groupId>
           <artifactId>kaptcha</artifactId>
@@ -153,7 +152,7 @@
           <groupId>commons-fileupload</groupId>
           <artifactId>commons-fileupload</artifactId>
           <version>1.3.2</version>
-        </dependency>-->
+        </dependency>
 
     <!-- redis客户端:Jedis -->
     <!--<dependency>
