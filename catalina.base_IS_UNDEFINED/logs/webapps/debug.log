@@ -28,3 +28,6 @@
 2024-10-02 22:33:05.063 [main] DEBUG c.bytetube.communityApp.dao.ShopDao.queryShopCount - ==>  Preparing: SELECT count(1) FROM tb_shop s, tb_area a, tb_shop_category sc WHERE s.shop_category_id = ? AND s.area_id=a.area_id AND s.shop_category_id = sc.shop_category_id 
 2024-10-02 22:33:05.063 [main] DEBUG c.bytetube.communityApp.dao.ShopDao.queryShopCount - ==> Parameters: 3(Long)
 2024-10-02 22:33:05.064 [main] DEBUG c.bytetube.communityApp.dao.ShopDao.queryShopCount - <==      Total: 1
+2024-10-02 23:03:59.294 [main] DEBUG c.b.c.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id FROM tb_product_category WHERE shop_id = ? ORDER BY priority DESC 
+2024-10-02 23:03:59.331 [main] DEBUG c.b.c.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
+2024-10-02 23:03:59.377 [main] DEBUG c.b.c.d.P.queryProductCategoryList - <==      Total: 10
