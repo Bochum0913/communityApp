@@ -13,13 +13,13 @@ public interface ShopDao {
 	 * @param rowIndex 从第几行开始取数据
 	 * @param pageSize 返回的条数
 	 */
-	/*List<Shop> queryShopList(@Param("shopCondition") Shop shopCondition, @Param("rowIndex") int rowIndex,
-							 @Param("pageSize") int pageSize);*/
+	List<Shop> queryShopList(@Param("shopCondition") Shop shopCondition, @Param("rowIndex") int rowIndex,
+							 @Param("pageSize") int pageSize);
 
 	/**
 	 * 返回queryShopList总数
 	 */
-	/*int queryShopCount(@Param("shopCondition") Shop shopCondition);*/
+	int queryShopCount(@Param("shopCondition") Shop shopCondition);
 
 	Shop queryByShopId(long shopId);
 

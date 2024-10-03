@@ -10,7 +10,7 @@ public interface ShopService {
 	/**
 	 * 根据shopCondition分页返回相应店铺列表
 	 */
-	//public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize);
+	public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize);
 
 
 	/**

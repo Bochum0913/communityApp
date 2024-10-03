@@ -8,7 +8,7 @@ import ca.bytetube.communityApp.enums.ShopStateEnum;
 import ca.bytetube.communityApp.exceptions.ShopOperationException;
 import ca.bytetube.communityApp.service.ShopService;
 import ca.bytetube.communityApp.util.ImageUtil;
-//import ca.bytetube.communityApp.util.PageCalculator;
+import ca.bytetube.communityApp.util.PageCalculator;
 import ca.bytetube.communityApp.util.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class ShopServiceImpl implements ShopService {
 	@Autowired
 	private ShopDao shopDao;
 
-	/*@Override
+	@Override
 	public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
 		//将页码转换成行码
 		int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
@@ -39,7 +39,7 @@ public class ShopServiceImpl implements ShopService {
 			se.setState(ShopStateEnum.INNER_ERROR.getState());
 		}
 		return se;
-	}*/
+	}
 
 	@Override
 	public Shop getByShopId(long shopId) {

@@ -25,7 +25,6 @@ public class ShopServiceTest extends BaseTest {
 	@Autowired
 	private ShopService shopService;
 
-/*
 	@Test
 	public void testGetShopList() {
 		Shop shopCondition = new Shop();
@@ -36,7 +35,6 @@ public class ShopServiceTest extends BaseTest {
 		System.out.println("shop list size：" + se.getShopList().size());
 		System.out.println("shop count：" + se.getCount());
 	}
-*/
 	@Test
 	public void testModifyShop() throws ShopOperationException, FileNotFoundException {
 		Shop shop = new Shop();
