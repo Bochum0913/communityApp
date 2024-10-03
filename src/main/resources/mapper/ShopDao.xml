@@ -141,7 +141,7 @@
 			s.shop_category_id = sc.shop_category_id
 		</where>
 	</select>
-
+-->
 	<select id="queryByShopId" resultMap="shopMap" parameterType="Long">
 		SELECT
 				s.shop_id,
@@ -170,7 +170,7 @@
 		  AND
 				s.shop_id = #{shopId}
 	</select>
--->
+
 	<insert id="insertShop" useGeneratedKeys="true" keyColumn="shop_id"
 		keyProperty="shopId">
 		INSERT INTO

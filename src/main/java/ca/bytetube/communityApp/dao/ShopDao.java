@@ -19,9 +19,9 @@ public interface ShopDao {
 	/**
 	 * 返回queryShopList总数
 	 */
-	/*int queryShopCount(@Param("shopCondition") Shop shopCondition);
+	/*int queryShopCount(@Param("shopCondition") Shop shopCondition);*/
 
-	Shop queryByShopId(long shopId);*/
+	Shop queryByShopId(long shopId);
 
 	int insertShop(Shop shop);
 
