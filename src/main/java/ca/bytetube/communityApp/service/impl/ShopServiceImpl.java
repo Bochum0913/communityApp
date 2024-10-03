@@ -39,7 +39,7 @@ public class ShopServiceImpl implements ShopService {
 			se.setState(ShopStateEnum.INNER_ERROR.getState());
 		}
 		return se;
-	}
+	}*/
 
 	@Override
 	public Shop getByShopId(long shopId) {
@@ -75,7 +75,7 @@ public class ShopServiceImpl implements ShopService {
 				throw new ShopOperationException("modifyShop error:" + e.getMessage());
 			}
 		}
-	}*/
+	}
 
 
 	@Override
