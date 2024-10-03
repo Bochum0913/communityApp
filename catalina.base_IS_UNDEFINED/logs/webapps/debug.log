@@ -1,3 +1,12 @@
 2024-10-03 15:33:43.454 [main] DEBUG c.b.c.d.P.batchInsertProductCategory - ==>  Preparing: INSERT INTO tb_product_category(product_category_name, priority, create_time, shop_id) VALUES ( ?, ?, ?, ? ) , ( ?, ?, ?, ? ) 
 2024-10-03 15:33:43.503 [main] DEBUG c.b.c.d.P.batchInsertProductCategory - ==> Parameters: category10(String), 1(Integer), 2024-10-03 15:33:43.224(Timestamp), 1(Long), category20(String), 2(Integer), 2024-10-03 15:33:43.224(Timestamp), 1(Long)
 2024-10-03 15:33:43.509 [main] DEBUG c.b.c.d.P.batchInsertProductCategory - <==    Updates: 2
+2024-10-03 16:36:07.957 [main] DEBUG c.b.c.d.P.queryProductCategoryList - ==>  Preparing: SELECT product_category_id, product_category_name, priority, create_time, shop_id FROM tb_product_category WHERE shop_id = ? ORDER BY priority DESC 
+2024-10-03 16:36:07.983 [main] DEBUG c.b.c.d.P.queryProductCategoryList - ==> Parameters: 1(Long)
+2024-10-03 16:36:08.013 [main] DEBUG c.b.c.d.P.queryProductCategoryList - <==      Total: 12
+2024-10-03 16:36:08.019 [main] DEBUG c.b.c.dao.ProductCategoryDao.deleteProductCategory - ==>  Preparing: DELETE FROM tb_product_category WHERE product_category_id = ? AND shop_id = ? 
+2024-10-03 16:36:08.019 [main] DEBUG c.b.c.dao.ProductCategoryDao.deleteProductCategory - ==> Parameters: 39(Long), 1(Long)
+2024-10-03 16:36:08.031 [main] DEBUG c.b.c.dao.ProductCategoryDao.deleteProductCategory - <==    Updates: 1
+2024-10-03 16:36:08.031 [main] DEBUG c.b.c.dao.ProductCategoryDao.deleteProductCategory - ==>  Preparing: DELETE FROM tb_product_category WHERE product_category_id = ? AND shop_id = ? 
+2024-10-03 16:36:08.031 [main] DEBUG c.b.c.dao.ProductCategoryDao.deleteProductCategory - ==> Parameters: 38(Long), 1(Long)
+2024-10-03 16:36:08.035 [main] DEBUG c.b.c.dao.ProductCategoryDao.deleteProductCategory - <==    Updates: 1
