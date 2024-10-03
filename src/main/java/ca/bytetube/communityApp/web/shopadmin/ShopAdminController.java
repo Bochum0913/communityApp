@@ -29,13 +29,13 @@ public class ShopAdminController {
 		return "shop/shopoperation";
 	}
 
-	/*@RequestMapping(value = "/shoplist")
+	@RequestMapping(value = "/shoplist")
 	public String shopList() {
 		// 转发至店铺列表页面
 		return "shop/shoplist";
 	}
 
-	@RequestMapping(value = "/productoperation")
+	/*@RequestMapping(value = "/productoperation")
 	public String productOperation() {
 		// 转发至商品添加/编辑页面
 		return "shop/productoperation";
