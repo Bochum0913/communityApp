@@ -1,4 +1,5 @@
 package ca.bytetube.communityApp.web.shopadmin;
+
 import ca.bytetube.communityApp.dto.ImageHolder;
 import ca.bytetube.communityApp.dto.ProductExecution;
 import ca.bytetube.communityApp.entity.Product;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile; 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -23,13 +24,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @Controller
 @RequestMapping("/shopadmin")
 public class ProductManagementController {
 	@Autowired
 	private ProductService productService;
+
+
 	// 支持上传商品详情图的最大数量
 	private static final int IMAGEMAXCOUNT = 6;
+
+
 	@RequestMapping(value = "/addproduct", method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String, Object> addProduct(HttpServletRequest request) {
@@ -95,6 +101,7 @@ public class ProductManagementController {
 		}
 		return modelMap;
 	}
+
 	private ImageHolder handleImage(HttpServletRequest request, ImageHolder thumbnail, List<ImageHolder> productImgList)
 			throws IOException {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
