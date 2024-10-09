@@ -1,30 +1,3 @@
-2024-10-04 13:52:15.564 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO tb_product(product_name,product_desc,img_addr, normal_price,promotion_price,priority,create_time, last_edit_time,enable_status,point,product_category_id, shop_id) VALUES (?,?,?, ?,?,?,?, ?,?,?,?, ?) 
-2024-10-04 13:52:15.619 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - ==> Parameters: test1(String), testDesc1(String), test1(String), null, null, 1(Integer), 2024-10-04 13:52:15.349(Timestamp), 2024-10-04 13:52:15.349(Timestamp), 1(Integer), null, 1(Long), 1(Long)
-2024-10-04 13:52:15.631 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - <==    Updates: 1
-2024-10-04 13:52:15.645 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO tb_product(product_name,product_desc,img_addr, normal_price,promotion_price,priority,create_time, last_edit_time,enable_status,point,product_category_id, shop_id) VALUES (?,?,?, ?,?,?,?, ?,?,?,?, ?) 
-2024-10-04 13:52:15.646 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - ==> Parameters: test2(String), testDesc2(String), test2(String), null, null, 2(Integer), 2024-10-04 13:52:15.349(Timestamp), 2024-10-04 13:52:15.349(Timestamp), 0(Integer), null, 1(Long), 1(Long)
-2024-10-04 13:52:15.648 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - <==    Updates: 1
-2024-10-04 13:52:15.649 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO tb_product(product_name,product_desc,img_addr, normal_price,promotion_price,priority,create_time, last_edit_time,enable_status,point,product_category_id, shop_id) VALUES (?,?,?, ?,?,?,?, ?,?,?,?, ?) 
-2024-10-04 13:52:15.650 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - ==> Parameters: test3(String), testDesc3(String), test3(String), null, null, 3(Integer), 2024-10-04 13:52:15.349(Timestamp), 2024-10-04 13:52:15.349(Timestamp), 1(Integer), null, 1(Long), 1(Long)
-2024-10-04 13:52:15.653 [main] DEBUG c.b.communityApp.dao.ProductDao.insertProduct - <==    Updates: 1
-2024-10-04 13:52:25.039 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - ==>  Preparing: SELECT product_id, product_name, product_desc, img_addr, normal_price, promotion_price, priority, create_time, last_edit_time, enable_status, point, product_category_id, shop_id FROM tb_product ORDER BY priority DESC LIMIT ?,?; 
-2024-10-04 13:52:25.080 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - ==> Parameters: 0(Integer), 3(Integer)
-2024-10-04 13:52:25.117 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - <==      Total: 3
-2024-10-04 13:52:25.122 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductCount - ==>  Preparing: SELECT count(1) FROM tb_product 
-2024-10-04 13:52:25.123 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductCount - ==> Parameters: 
-2024-10-04 13:52:25.125 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductCount - <==      Total: 1
-2024-10-04 13:53:29.102 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - ==>  Preparing: SELECT product_id, product_name, product_desc, img_addr, normal_price, promotion_price, priority, create_time, last_edit_time, enable_status, point, product_category_id, shop_id FROM tb_product ORDER BY priority DESC LIMIT ?,?; 
-2024-10-04 13:53:29.134 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - ==> Parameters: 0(Integer), 3(Integer)
-2024-10-04 13:53:29.169 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - <==      Total: 3
-2024-10-04 13:53:29.174 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductCount - ==>  Preparing: SELECT count(1) FROM tb_product 
-2024-10-04 13:53:29.174 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductCount - ==> Parameters: 
-2024-10-04 13:53:29.175 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductCount - <==      Total: 1
-2024-10-04 13:53:29.177 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - ==>  Preparing: SELECT product_id, product_name, product_desc, img_addr, normal_price, promotion_price, priority, create_time, last_edit_time, enable_status, point, product_category_id, shop_id FROM tb_product WHERE product_name like '%test%' ORDER BY priority DESC LIMIT ?,?; 
-2024-10-04 13:53:29.177 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - ==> Parameters: 0(Integer), 3(Integer)
-2024-10-04 13:53:29.179 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductList - <==      Total: 3
-2024-10-04 13:55:36.697 [main] DEBUG c.b.c.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO tb_product_img(img_addr,img_desc,priority, create_time,product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
-2024-10-04 13:55:36.741 [main] DEBUG c.b.c.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: pic1(String), testpic1(String), 1(Integer), 2024-10-04 13:55:36.474(Timestamp), 1(Long), pic2(String), null, 1(Integer), 2024-10-04 13:55:36.474(Timestamp), 1(Long)
-2024-10-04 13:55:36.756 [main] DEBUG c.b.c.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2
-2024-10-04 13:55:36.758 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductById - ==>  Preparing: SELECT p.product_id, p.product_name, p.product_desc, p.img_addr, p.normal_price, p.promotion_price, p.priority, p.create_time, p.last_edit_time, p.enable_status, p.point, p.product_category_id, p.shop_id, pm.product_img_id, pm.img_addr AS detail_img, pm.img_desc, pm.priority, pm.create_time FROM tb_product p LEFT JOIN tb_product_img pm ON p.product_id = pm.product_id WHERE p.product_id = ? ORDER BY pm.priority DESC 
-2024-10-04 13:55:36.758 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductById - ==> Parameters: 1(Long)
-2024-10-04 13:55:36.783 [main] DEBUG c.b.communityApp.dao.ProductDao.queryProductById - <==      Total: 3
+2024-10-08 22:42:51.005 [main] DEBUG c.b.communityApp.dao.HeadLineDao.queryHeadLine - ==>  Preparing: SELECT line_id, line_name, line_link, line_img, priority, enable_status, create_time, last_edit_time FROM tb_head_line ORDER BY priority DESC 
+2024-10-08 22:42:51.054 [main] DEBUG c.b.communityApp.dao.HeadLineDao.queryHeadLine - ==> Parameters: 
+2024-10-08 22:42:51.093 [main] DEBUG c.b.communityApp.dao.HeadLineDao.queryHeadLine - <==      Total: 4
