@@ -1,4 +1,4 @@
-package ca.bytetube.communityApp.web.shopadmin;
+package ca.bytetube.communityApp.web.frontend;
 import ca.bytetube.communityApp.dto.ShopExecution;
 import ca.bytetube.communityApp.entity.Area;
 import ca.bytetube.communityApp.entity.Shop;
