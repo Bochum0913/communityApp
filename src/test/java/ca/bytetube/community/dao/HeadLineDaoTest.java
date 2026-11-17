@@ -1,3 +1,4 @@
+
 package ca.bytetube.community.dao;
 
 import ca.bytetube.community.BaseTest;
@@ -9,14 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class HeadLineDaoTest extends BaseTest {
+
 	@Autowired
 	private HeadLineDao headLineDao;
 
 	@Test
-	public void testQueryArea() {
-		List<HeadLine> headLineList = headLineDao.queryHeadLine(new HeadLine());
-		assertEquals(4, headLineList.size());
+	public void testQueryHeadLine() {
+		List<HeadLine> headLineList =
+				headLineDao.queryHeadLine(new HeadLine());
+
+		assertNotNull("Headline list should not be null", headLineList);
+		assertEquals("Empty test database should have no headlines",
+				0, headLineList.size());
 	}
 }

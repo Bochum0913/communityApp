@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>shop detail</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -12,14 +13,14 @@
     <link rel="stylesheet"
           href="../resources/css/common/sm-extend.min.css">
     <link rel="stylesheet" href="../resources/css/frontend/shopdetail.css">
+    <link rel="stylesheet" href="../resources/css/common/communityapp-modern.css?v=4">
 </head>
 <body>
 <div class="page-group">
     <div class="page">
         <header class="bar bar-nav">
-            <a class="button button-link button-nav pull-left" external href="#"
-               onClick="javascript :history.back(-1);" data-transition='slide-out'>
-                <span class="icon icon-left"></span> back
+            <a class="button button-link button-nav pull-left" external href="/communityApp/frontend/shoplist" data-transition='slide-out'>
+                <span class="icon icon-left"></span> Back to Shops
             </a>
             <h1 class="title" id="shop-name">shop detail</h1>
 
@@ -33,9 +34,9 @@
         </nav>
         <div class="content infinite-scroll infinite-scroll-bottom"
              data-distance="100">
-            <!-- 这里是页面内容区 -->
+            <!-- Page section -->
             <div class="shop-detail-dev">
-                <div class="card">
+                <div class="card ca-shop-detail-card">
                     <div valign="bottom"
                          class="card-header color-white no-border no-padding">
                         <img class='card-cover' id="shop-cover-pic" src="" alt="">
@@ -53,11 +54,12 @@
                     </div>
                 </div>
             </div>
-            <!-- 商品类别列表展示区 -->
+            <div class="ca-section-intro ca-detail-section"><h2>Products</h2><p>Browse this shop's product selection.</p></div>
+            <!-- Page section -->
             <div class="shopdetail-button-div" id="shopdetail-button-div">
 
             </div>
-            <!-- 商品名字搜索区 -->
+            <!-- Page section -->
             <div class="detail-search">
                 <div class="searchbar">
                     <a class="searchbar-cancel">cancel</a>
@@ -67,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 商品列表展示区 -->
+            <!-- Page section -->
             <div class="list-div">
 
             </div>
@@ -77,15 +79,16 @@
         </div>
     </div>
 
-    <!--侧边栏  -->
+    <!-- Page section -->
     <div class="panel-overlay"></div>
     <div class="panel panel-right panel-reveal" id="panel-right-demo">
         <div class="content-block">
+<p class="ca-session-label" aria-live="polite">Account</p>
             <p>
-                <a href="/communityApp/local/accountbind?usertype=1" class="close-panel">alternative account</a>
+                <a href="/communityApp/local/account" class="close-panel">account settings</a>
             </p>
             <p>
-                <a href="/communityApp/local/changepsw?usertype=1" class="close-panel">modify password</a>
+                <a href="/communityApp/local/changepsw" class="close-panel">modify password</a>
             </p>
             <p>
                 <a href="/communityApp/frontend/myrecord" class="close-panel">your orders</a>
@@ -114,7 +117,9 @@
 <script type='text/javascript' src='../resources/js/common/common.js'
         charset='utf-8'></script>
 <script type='text/javascript'
-        src='../resources/js/frontend/shopdetail.js' charset='utf-8'></script>
+        src='../resources/js/frontend/shopdetail.js?v=4' charset='utf-8'></script>
 
+<script type="text/javascript" src="../resources/js/local/logout.js" charset="utf-8"></script>
+<script src="/communityApp/resources/js/features/personal-menu.js"></script>
 </body>
 </html>

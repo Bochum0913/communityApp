@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>product detail</title>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -13,14 +14,14 @@
 	href="../resources/css/common/sm-extend.min.css">
 <link rel="stylesheet"
 	href="../resources/css/frontend/productdetail.css">
+    <link rel="stylesheet" href="../resources/css/common/communityapp-modern.css?v=4">
 </head>
 <body>
 	<div class="page-group">
 		<div class="page">
 			<header class="bar bar-nav">
-				<a class="button button-link button-nav pull-left" external href="#"
-					onClick="javascript :history.back(-1);" data-transition='slide-out'>
-					<span class="icon icon-left"></span> back
+				<a class="button button-link button-nav pull-left" external href="/communityApp/frontend/shoplist" id="ca-back-to-shop" data-transition='slide-out'>
+					<span class="icon icon-left"></span> Back to Shop
 				</a>
 				<h1 class="title" id="product-name">product detail</h1>
 			</header>
@@ -33,15 +34,16 @@
 			</nav>
 			<div class="content infinite-scroll infinite-scroll-bottom"
 				data-distance="100">
-				<!-- 这里是页面内容区 -->
+				<!-- Page section -->
 				<div class="shop-detail-dev">
-					<div class="card">
+					<div class="card ca-product-detail-card">
 						<div valign="bottom"
 							class="card-header color-white no-border no-padding">
 							<img class="card-cover" id="product-img" src="" alt="" />
 						</div>
 						<div class="card-content">
 							<div class="card-content-inner">
+                                <h2 id="product-display-name" class="ca-product-display-name"></h2>
 								<p class="color-gray">
 									<span id="product-time">2024/10/08</span> <span
 										class="pull-right" id="product-point"></span>
@@ -53,21 +55,27 @@
 								<p id="product-desc"></p>
 							</div>
 						</div>
-						<div class="card-img" id="imgList">
+						<div class="ca-details-title">Product gallery</div>
+                        <div class="card-img" id="imgList">
 
 						</div>
 					</div>
 				</div>
+			<section id="ca-order-widget" class="ca-order-widget">
+<label for="ca-qty">Quantity</label> <input id="ca-qty" type="number" value="1" min="1" max="20" style="width:65px;padding:6px"> <button type="button" id="ca-place-order" style="padding:10px 18px;border:0;border-radius:8px;background:#2563eb;color:white;cursor:pointer">Pay with Stripe</button>
+<p id="ca-order-message" role="status"></p><a class="ca-order-view ca-hidden" href="/communityApp/frontend/myrecord" external>View Your Orders</a></section>
+<div id="ca-order-overlay" class="ca-order-overlay ca-hidden" role="dialog" aria-modal="true" aria-labelledby="ca-confirm-title"><div class="ca-order-modal"><h2 id="ca-confirm-title">Confirm your order</h2><p id="ca-confirm-summary"></p><p id="ca-confirm-total"></p><p class="ca-muted">You will continue to Stripe Test Mode. No real money will be charged.</p><div class="ca-modal-actions"><button type="button" id="ca-cancel-order">Cancel</button><button type="button" id="ca-confirm-order">Pay with Stripe</button></div></div></div>
 			</div>
 
 			<div class="panel-overlay"></div>
 			<div class="panel panel-right panel-reveal" id="panel-right-demo">
 				<div class="content-block">
+<p class="ca-session-label" aria-live="polite">Account</p>
 					<p>
-						<a href="/communityApp/local/accountbind?usertype=1" class="close-panel">alternative account</a>
+						<a href="/communityApp/local/account" class="close-panel">account settings</a>
 					</p>
 					<p>
-						<a href="/communityApp/local/changepsw?usertype=1" class="close-panel">modify password</a>
+						<a href="/communityApp/local/changepsw" class="close-panel">modify password</a>
 					</p>
 					<p>
 						<a href="/communityApp/frontend/myrecord" class="close-panel">your orders</a>
@@ -97,8 +105,13 @@
 		<script type='text/javascript' src='../resources/js/common/common.js'
 			charset='utf-8'></script>
 		<script type='text/javascript'
-			src='../resources/js/frontend/productdetail.js' charset='utf-8'></script>
+			src='../resources/js/frontend/productdetail.js?v=4' charset='utf-8'></script>
 	</div>
 
+<script type="text/javascript" src="../resources/js/local/logout.js" charset="utf-8"></script>
+
+<script src="/communityApp/resources/js/common/communityapp-features.js"></script>
+<script src="/communityApp/resources/js/features/place-order.js"></script>
+<script src="/communityApp/resources/js/features/personal-menu.js"></script>
 </body>
 </html>

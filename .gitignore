@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 
+# IntelliJ IDEA local project settings
+.idea/
+
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -36,3 +39,26 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+
+# Local database credentials
+**/jdbc.properties
+!**/jdbc.example.properties
+
+# Stripe secrets and local environment files
+.env
+.env.*
+!.env.example
+**/stripe-config.ps1
+**/*secret*.properties
+
+# Local logs and temporary files
+*.log
+logs/
+*.tmp
+
+# Local database files and exports
+*.sql.gz
+*.sql.zip
+*.dump
+*.bak

@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>shop list</title>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -12,21 +13,22 @@
 <link rel="stylesheet"
 	href="../resources/css/common/sm-extend.min.css">
 <link rel="stylesheet" href="../resources/css/frontend/shoplist.css">
+    <link rel="stylesheet" href="../resources/css/common/communityapp-modern.css?v=4">
 </head>
 <body>
 	<div class="page-group">
 		<div class="page">
 			<header class="bar bar-nav">
 				<a class="button button-link button-nav pull-left" external
-					href="index" data-transition='slide-out'> <span
-					class="icon icon-left"></span> back
+					href="/communityApp/frontend/index" data-transition='slide-out'> <span
+					class="icon icon-left"></span> Back to Home
 				</a>
 				<h1 class="title">shop list</h1>
 			</header>
 			<div class="bar bar-header-secondary">
 				<div class="searchbar">
 					<a class="searchbar-cancel">cancel</a>
-					<!-- 搜索栏 -->
+					<!-- Page section -->
 					<div class="search-input">
 						<label class="icon icon-search" for="search"></label> <input
 							type="search" id='search' placeholder='keywords...' />
@@ -42,15 +44,15 @@
 			</nav>
 			<div class="content infinite-scroll infinite-scroll-bottom"
 				data-distance="100">
-				<!-- 类别列表展示区 -->
+				<!-- Page section -->
 				<div class="shoplist-button-div" id="shoplist-search-div">
 
 				</div>
 				<div class="select-wrap">
-					<!-- 区域列表展示区 -->
+					<!-- Page section -->
 					<select class="select" id="area-search"></select>
 				</div>
-				<!-- 店铺列表在此添加 -->
+				<!-- Page section -->
 				<div class="list-div shop-list">
 
 				</div>
@@ -60,15 +62,16 @@
 			</div>
 		</div>
 	</div>
-	<!--侧边栏  -->
+	<!-- Page section -->
 	<div class="panel-overlay"></div>
 	<div class="panel panel-right panel-reveal" id="panel-right-demo">
 		<div class="content-block">
+<p class="ca-session-label" aria-live="polite">Account</p>
 			<p>
-				<a href="/communityApp/local/accountbind?usertype=1" class="close-panel">alternative account</a>
+				<a href="/communityApp/local/account" class="close-panel">account settings</a>
 			</p>
 			<p>
-				<a href="/communityApp/local/changepsw?usertype=1" class="close-panel">modify password</a>
+				<a href="/communityApp/local/changepsw" class="close-panel">modify password</a>
 			</p>
 			<p>
 				<a href="/communityApp/frontend/myrecord" class="close-panel">your orders</a>
@@ -95,6 +98,8 @@
 	<script type='text/javascript' src='../resources/js/common/common.js'
 		charset='utf-8'></script>
 	<script type='text/javascript'
-		src='../resources/js/frontend/shoplist.js' charset='utf-8'></script>
+		src='../resources/js/frontend/shoplist.js?v=4' charset='utf-8'></script>
+<script type="text/javascript" src="../resources/js/local/logout.js" charset="utf-8"></script>
+<script src="/communityApp/resources/js/features/personal-menu.js"></script>
 </body>
 </html>

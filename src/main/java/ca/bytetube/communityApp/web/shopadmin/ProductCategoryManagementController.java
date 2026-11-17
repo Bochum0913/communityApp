@@ -46,6 +46,12 @@ public class ProductCategoryManagementController {
 													HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<>();
 		Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
+        if (currentShop == null || currentShop.getShopId() == null || currentShop.getShopId() <= 0
+                || productCategoryList == null) {
+            modelMap.put("success", false);
+            modelMap.put("errMsg", "No shop selected or category list missing");
+            return modelMap;
+        }
 		for (ProductCategory pc : productCategoryList) {
 			pc.setShopId(currentShop.getShopId());
 		}
@@ -97,6 +103,32 @@ public class ProductCategoryManagementController {
 		}
 		return modelMap;
 	}
+    /** Persist a priority change for a category owned by the selected shop. */
+    @RequestMapping(value = "/modifyproductcategory", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> modifyProductCategory(
+            @org.springframework.web.bind.annotation.RequestParam("productCategoryId") Long productCategoryId,
+            @org.springframework.web.bind.annotation.RequestParam("priority") Integer priority,
+            HttpServletRequest request) {
+        Map<String, Object> result = new HashMap<>();
+        Shop shop = (Shop) request.getSession().getAttribute("currentShop");
+        if (shop == null || shop.getShopId() == null || shop.getShopId() <= 0 ||
+                productCategoryId == null || priority == null) {
+            result.put("success", false);
+            result.put("errMsg", "Select a shop and provide a category ID and priority");
+            return result;
+        }
+        try {
+            ProductCategoryExecution execution = productCategoryService.updateProductCategoryPriority(
+                    productCategoryId, shop.getShopId(), priority);
+            result.put("success", execution.getState() == ProductCategoryStateEnum.SUCCESS.getState());
+        } catch (ProductCategoryOperationException ex) {
+            result.put("success", false);
+            result.put("errMsg", ex.getMessage());
+        }
+        return result;
+    }
 }
+
 
 

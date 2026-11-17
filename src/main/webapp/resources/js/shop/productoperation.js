@@ -28,6 +28,10 @@ $(function () {
                     // 从返回的JSON当中获取product对象的信息，并赋值给表单
                     var product = data.product;
                     $('#product-name').val(product.productName);
+                    if (product.imgAddr) {
+                        $('#ca-product-image-preview').attr('src', String(product.imgAddr).replace(/\\/g, '/'));
+                        $('#ca-existing-product-image').removeAttr('hidden').show();
+                    }
                     $('#product-desc').val(product.productDesc);
                     $('#priority').val(product.priority);
                     $('#point').val(product.point);

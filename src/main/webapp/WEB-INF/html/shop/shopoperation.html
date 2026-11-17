@@ -2,10 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SUI Mobile Demo</title>
+	<title>Shop Information | Urban Life</title>
 	<meta name="description"
-		  content="MSUI: Build mobile apps with simple HTML, CSS, and JS components.">
+		  content="Edit shop information.">
 	<meta name="author" content="阿里巴巴国际UED前端">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,15 +19,14 @@
 		  href="../resources/css/common/sm-extend.min.css">
 	<link rel="apple-touch-icon-precomposed"
 		  href="/assets/img/apple-touch-icon-114x114.png">
+    <link rel="stylesheet" href="../resources/css/common/communityapp-modern.css?v=4">
 </head>
 <body>
 <div class="page-group">
 	<div id="page-label-input" class="page">
 		<header class="bar bar-nav">
-			<a class="button button-link button-nav pull-left back"
-			   href="/demos/form"> <span class="icon icon-left"></span> back
-			</a>
-			<h1 class="title">shop info</h1>
+<a class="ca-admin-back" external href="/communityApp/shopadmin/shopmanagement">Back to Shop Management</a>
+			<h1 class="title">Shop Information</h1>
 		</header>
 		<div class="content">
 			<div class="list-block">
@@ -35,7 +35,7 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">shop name</div>
+								<div class="item-title label">Shop Name</div>
 								<div class="item-input">
 									<input type="text" id="shop-name" placeholder="shop name">
 								</div>
@@ -46,7 +46,7 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">shop category</div>
+								<div class="item-title label">Shop Category</div>
 								<div class="item-input">
 									<select id="shop-category">
 									</select>
@@ -58,7 +58,7 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">area</div>
+								<div class="item-title label">Area</div>
 								<div class="item-input">
 									<select id="area">
 									</select>
@@ -70,7 +70,7 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">addr</div>
+								<div class="item-title label">Address</div>
 								<div class="item-input">
 									<input type="text" id="shop-addr" placeholder="addr">
 								</div>
@@ -81,7 +81,7 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">phone</div>
+								<div class="item-title label">Phone</div>
 								<div class="item-input">
 									<input type="text" id="shop-phone" placeholder="phone">
 								</div>
@@ -92,7 +92,7 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">thumbnail</div>
+								<div class="item-title label">Shop Image</div>
 								<div class="item-input">
 									<input type="file" id="shop-img">
 								</div>
@@ -103,7 +103,7 @@
 					<li class="align-top">
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">shop desc</div>
+								<div class="item-title label">Shop Description</div>
 								<div class="item-input">
 									<textarea id="shop-desc" placeholder="shop desc"></textarea>
 								</div>
@@ -114,7 +114,7 @@
 					<li>
 						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title label">captcha</div>
+								<div class="item-title label">Captcha</div>
 								<input type="text" id="j_captcha" placeholder="captcha">
 								<div class="item-input">
 									<img id="captcha_img" alt="update" title="update"
@@ -128,11 +128,11 @@
 			<div class="content-block">
 				<div class="row">
 					<div class="col-50">
-						<a href="/communityApp/shopadmin/shopmanagement" class="button button-big button-fill button-danger">back</a>
+						<a href="/communityApp/shopadmin/shopmanagement" class="button button-big button-fill button-danger">Cancel</a>
 					</div>
 					<div class="col-50">
 						<a href="#" class="button button-big button-fill button-success"
-						   id="submit">submit</a>
+						   id="submit">Save Shop</a>
 					</div>
 				</div>
 			</div>

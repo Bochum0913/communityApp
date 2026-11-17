@@ -84,11 +84,14 @@ $(function() {
 							+ item.imgAddr + '" width="44">' + '</div>'
 							+ '<div class="item-inner">'
 							+ '<div class="item-subtitle">' + item.productDesc
-							+ '</div>' + '</div>' + '</li>' + '</ul>'
+                            + '</div>' + '<div class="ca-shop-product-price">'
+                            + (item.promotionPrice != null ? ('$' + Number(item.promotionPrice).toFixed(2)) : item.normalPrice != null ? ('$' + Number(item.normalPrice).toFixed(2)) : '')
+                            + (item.promotionPrice != null && item.normalPrice != null && Number(item.normalPrice) > Number(item.promotionPrice) ? ' <del>$' + Number(item.normalPrice).toFixed(2) + '</del>' : '')
+                            + '</div>' + '</div>' + '</li>' + '</ul>'
 							+ '</div>' + '</div>' + '<div class="card-footer">'
 							+ '<p class="color-gray">'
 							+ new Date(item.lastEditTime).Format("yyyy-MM-dd")
-							+ ' updated</p>' + '<span>click</span>' + '</div>'
+							+ ' updated</p>' + '<span>View Product</span>' + '</div>'
 							+ '</div>';
 				});
 				// 将卡片集合添加到目标HTML组件里

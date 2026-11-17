@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>product management</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -13,17 +14,19 @@
           href="../resources/css/common/sm-extend.min.css">
     <link rel="stylesheet"
           href="../resources/css/shop/productmanagement.css">
+    <link rel="stylesheet" href="../resources/css/common/communityapp-modern.css?v=4">
 </head>
 <body>
 <header class="bar bar-nav">
-    <h1 class="title">product management</h1>
+<a class="ca-admin-back" external href="/communityApp/shopadmin/shopmanagement">Back to Shop Management</a>
+    <h1 class="title">Product Management</h1>
 </header>
 <div class="content">
     <div class="content-block">
-        <div class="row row-product">
-            <div class="col-33">product name</div>
-            <div class="col-20">point</div>
-            <div class="col-40">operation</div>
+        <div class="row row-product ca-product-head">
+            <div class="col-33">Product</div>
+            <div class="col-20">Price / Points</div>
+            <div class="col-40">Status / Actions</div>
         </div>
         <div class="product-wrap">
         </div>
@@ -32,11 +35,11 @@
         <div class="row">
             <div class="col-50">
                 <a href="/communityApp/shopadmin/shopmanagement"
-                   class="button button-big button-fill button-danger">back</a>
+                   class="button button-big button-fill button-danger">Back</a>
             </div>
             <div class="col-50">
                 <a href="/communityApp/shopadmin/productoperation" class="button button-big button-fill button-success"
-                   id="new">add new product</a>
+                   id="new">+ Add Product</a>
             </div>
         </div>
     </div>
@@ -48,6 +51,6 @@
 <script type='text/javascript'
         src='../resources/js/common/sm-extend.min.js' charset='utf-8'></script>
 <script type='text/javascript'
-        src='../resources/js/shop/productmanagement.js' charset='utf-8'></script>
+        src='../resources/js/shop/productmanagement.js?v=4' charset='utf-8'></script>
 </body>
 </html>

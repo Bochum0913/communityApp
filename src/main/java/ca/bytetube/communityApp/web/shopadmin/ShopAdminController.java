@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "shopadmin", method = { RequestMethod.GET })
 
 /**
- * 主要用来解析路由并转发到相应的html中
+ // Implementation note.
  */
 public class ShopAdminController {
 
 	@RequestMapping(value = "/productcategorymanagement", method = RequestMethod.GET)
 	private String productCategoryManage() {
-		// 转发至商品类别管理页面
+  // Implementation note.
 		return "shop/productcategorymanagement";
 	}
 
 	@RequestMapping(value = "/shopmanagement")
 	public String shopManagement() {
-		// 转发至店铺管理页面
+  // Implementation note.
 		return "shop/shopmanagement";
 	}
 
@@ -31,20 +31,25 @@ public class ShopAdminController {
 
 	@RequestMapping(value = "/shoplist")
 	public String shopList() {
-		// 转发至店铺列表页面
+  // Implementation note.
 		return "shop/shoplist";
 	}
 
 	@RequestMapping(value = "/productoperation")
 	public String productOperation() {
-		// 转发至商品添加/编辑页面
+  // Implementation note.
 		return "shop/productoperation";
 	}
 
 	@RequestMapping(value = "/productmanagement")
 	public String productManagement() {
-		// 转发至商品管理页面
+  // Implementation note.
 		return "shop/productmanagement";
 	}
 
+    @RequestMapping(value = "/dashboard")
+    public String dashboard() { return "shop/dashboard"; }
+
+    @RequestMapping(value = "/ordermanagement")
+    public String orderManagement() { return "shop/ordermanagement"; }
 }

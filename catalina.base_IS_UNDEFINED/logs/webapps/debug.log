@@ -1,3 +1,0 @@
-2024-10-08 22:42:51.005 [main] DEBUG c.b.communityApp.dao.HeadLineDao.queryHeadLine - ==>  Preparing: SELECT line_id, line_name, line_link, line_img, priority, enable_status, create_time, last_edit_time FROM tb_head_line ORDER BY priority DESC 
-2024-10-08 22:42:51.054 [main] DEBUG c.b.communityApp.dao.HeadLineDao.queryHeadLine - ==> Parameters: 
-2024-10-08 22:42:51.093 [main] DEBUG c.b.communityApp.dao.HeadLineDao.queryHeadLine - <==      Total: 4

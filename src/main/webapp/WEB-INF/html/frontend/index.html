@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>urban life</title>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -12,6 +13,7 @@
 <link rel="stylesheet"
 	href="../resources/css/common/sm-extend.min.css">
 <link rel="stylesheet" href="../resources/css/frontend/index.css">
+    <link rel="stylesheet" href="../resources/css/common/communityapp-modern.css?v=4">
 </head>
 <body>
 	<div class="page-group">
@@ -27,30 +29,38 @@
 				</a>
 			</nav>
 			<div class="content">
-				<!-- 这里是轮播图展示区 -->
+				<!-- Page section -->
 				<div class="swiper-container index-banner" data-space-between='10'>
 					<div class="swiper-wrapper">
 					</div>
 					<div class="swiper-pagination"></div>
 				</div>
-				<!-- 全类查询区 -->
+				<section class="ca-hero" aria-label="Explore Urban Life">
+  <div class="ca-eyebrow">URBAN LIFE / LOCAL DISCOVERY</div>
+  <h2>Discover your neighborhood</h2>
+  <p>Find local cafes, shops and services, all in one place.</p>
+  <a class="ca-hero-action" href="/communityApp/frontend/shoplist" external>Explore all shops <span aria-hidden="true">&rarr;</span></a>
+</section>
+<section class="ca-section-heading"><h2>Explore Categories</h2><p>Choose what you're looking for</p></section>
+<!-- Page section -->
 				<div class='total-shop-button'>
 					<a href="/communityApp/frontend/shoplist" external>all shops</a>
 				</div>
-				<!-- 一级类别展示区域 -->
-				<div class="row">
-				</div>
+				<!-- Page section -->
+				<div class="row ca-category-grid">
+                </div>
 			</div>
 		</div>
-		<!--侧边栏  -->
+		<!-- Page section -->
 		<div class="panel-overlay"></div>
 		<div class="panel panel-right panel-reveal" id="panel-right-demo">
 			<div class="content-block">
+<p class="ca-session-label" aria-live="polite">Account</p>
 				<p>
-					<a href="/communityApp/local/accountbind?usertype=1" class="close-panel">alternative account</a>
+					<a href="/communityApp/local/account" class="close-panel">account settings</a>
 				</p>
 				<p>
-					<a href="/communityApp/local/changepsw?usertype=1" class="close-panel">modify password</a>
+					<a href="/communityApp/local/changepsw" class="close-panel">modify password</a>
 				</p>
 				<p>
 					<a href="/communityApp/frontend/myrecord" class="close-panel">your orders</a>
@@ -79,5 +89,7 @@
 		src='../resources/js/common/sm-extend.min.js' charset='utf-8'></script>
 	<script type='text/javascript' src='../resources/js/frontend/index.js'
 		charset='utf-8'></script>
+<script type="text/javascript" src="../resources/js/local/logout.js" charset="utf-8"></script>
+<script src="/communityApp/resources/js/features/personal-menu.js"></script>
 </body>
 </html>

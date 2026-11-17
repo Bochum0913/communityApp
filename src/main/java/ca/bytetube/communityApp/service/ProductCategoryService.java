@@ -7,20 +7,18 @@ import ca.bytetube.communityApp.exceptions.ProductCategoryOperationException;
 import java.util.List;
 
 public interface ProductCategoryService {
-	/**
-	 * 查询指定某个店铺下的所有商品类别信息
-	 */
+	/** Product category operation. */
 	List<ProductCategory> getProductCategoryList(long shopId);
 
-	/**
-	 批量添加ProductCategory
-	 */
+	/** Product category operation. */
 	ProductCategoryExecution batchAddProductCategory(List<ProductCategory> productCategoryList)
 			throws ProductCategoryOperationException;
 
-	/**
-	 * 将此类别下的商品里的类别id置为null，再删除掉该商品类别
-	 */
+	/** Product category operation. */
 	ProductCategoryExecution deleteProductCategory(long productCategoryId, long shopId) throws ProductCategoryOperationException;
 
+    /** Change the priority for a category in the current shop. */
+    ProductCategoryExecution updateProductCategoryPriority(long productCategoryId,
+            long shopId, int priority) throws ProductCategoryOperationException;
 }
+

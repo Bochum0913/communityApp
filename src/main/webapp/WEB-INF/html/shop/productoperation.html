@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>product edit</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -14,13 +15,16 @@
           href="../resources/css/common/sm-extend.min.css">
     <link rel="stylesheet"
           href="../resources/css/shop/productmanagement.css">
+    <link rel="stylesheet" href="../resources/css/common/communityapp-modern.css?v=4">
 </head>
 <body>
 <header class="bar bar-nav">
-    <h1 class="title">product edit</h1>
+<a class="ca-admin-back" external href="/communityApp/shopadmin/productmanagement">Back to Products</a>
+    <h1 class="title">Product Edit</h1>
 </header>
 <div class="content">
-    <div class="list-block">
+    <div class="ca-form-section-title">Basic Information</div>
+    <div class="list-block ca-edit-form">
         <ul>
             <li>
                 <div class="item-content">
@@ -28,7 +32,7 @@
                         <i class="icon icon-form-name"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">product name</div>
+                        <div class="item-title label">Product Name</div>
                         <div class="item-input">
                             <input type="text" id="product-name" placeholder="product name">
                         </div>
@@ -41,7 +45,7 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">category</div>
+                        <div class="item-title label">Category</div>
                         <div class="item-input">
                             <select id="category">
                             </select>
@@ -55,7 +59,7 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">priority</div>
+                        <div class="item-title label">Priority</div>
                         <div class="item-input">
                             <input type="number" id="priority">
                         </div>
@@ -68,7 +72,7 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">point</div>
+                        <div class="item-title label">Reward Points</div>
                         <div class="item-input">
                             <input type="number" id="point">
                         </div>
@@ -81,7 +85,7 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">price</div>
+                        <div class="item-title label">Price</div>
                         <div class="item-input">
                             <input type="number" id="normal-price">
                         </div>
@@ -94,7 +98,7 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">promotion price</div>
+                        <div class="item-title label">Promotion Price</div>
                         <div class="item-input">
                             <input type="number" id="promotion-price">
                         </div>
@@ -107,9 +111,10 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">img</div>
+                        <div class="item-title label">Product Image</div>
                         <div class="item-input">
-                            <input type="file" id="small-img">
+                            <input type="file" id="small-img" accept="image/*">
+                            <div class="ca-current-image" id="ca-existing-product-image" hidden><span>Current image</span><img id="ca-product-image-preview" alt="Current product image"></div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +125,7 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner detail-img-div">
-                        <div class="item-title label">detail img</div>
+                        <div class="item-title label">Detail Images</div>
                         <div class="item-input" id="detail-img">
                             <input type="file" class="detail-img">
                         </div>
@@ -133,7 +138,7 @@
                         <i class="icon icon-form-email"></i>
                     </div>
                     <div class="item-inner">
-                        <div class="item-title label">product desc</div>
+                        <div class="item-title label">Product Description</div>
                         <div class="item-input">
                             <textarea id="product-desc"></textarea>
                         </div>
@@ -162,10 +167,10 @@
         <div class="row">
             <div class="col-50">
                 <a href="/communityApp/shopadmin/productmanagement"
-                   class="button button-big button-fill button-danger" id="back">back</a>
+                   class="button button-big button-fill button-danger" id="back">Cancel</a>
             </div>
             <div class="col-50">
-                <a href="#" class="button button-big button-fill" id="submit">submit</a>
+                <a href="#" class="button button-big button-fill" id="submit">Save Product</a>
             </div>
         </div>
     </div>
@@ -179,6 +184,6 @@
 <script type='text/javascript' src='../resources/js/common/common.js'
         charset='utf-8'></script>
 <script type='text/javascript'
-        src='../resources/js/shop/productoperation.js' charset='utf-8'></script>
+        src='../resources/js/shop/productoperation.js?v=4' charset='utf-8'></script>
 </body>
 </html>

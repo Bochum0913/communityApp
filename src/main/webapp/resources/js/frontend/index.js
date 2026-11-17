@@ -17,7 +17,7 @@ $(function() {
 			//将轮播图组赋值给前端HTML控件
 			$('.swiper-wrapper').html(swiperHtml);
 			//设定轮播图轮换时间为3秒
-			$(".swiper-container").swiper({
+            if (headLineList.length) $(".swiper-container").swiper({
 				autoplay : 3000,
 				//用户对轮播图进行操作时，是否自动停止autoplay
 				autoplayDisableOnInteraction : false
@@ -34,8 +34,7 @@ $(function() {
 						+ '</p>' + '<p class="shop-desc">'
 						+ item.shopCategoryDesc + '</p>' + '</div>'
 						+ '<div class="shop-classify-img-warp">'
-						+ '<img class="shop-img" src="' + item.shopCategoryImg
-						+ '">' + '</div>' + '</div>';
+						+ '<span class="ca-category-art ca-category-art-' + (index % 3) + '" aria-hidden="true">' + (index % 3 === 0 ? '☕' : index % 3 === 1 ? '🛍️' : '✨') + '</span>' + '</div>' + '</div>';
 			});
 			//将拼接好的类别赋值给前端HTML控件进行展示
 			$('.row').html(categoryHtml);

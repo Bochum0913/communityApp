@@ -1,23 +1,17 @@
-$(function() {
-	$('#log-out').click(function() {
-		// 清除session
-		$.ajax({
-			url : "/communityApp/local/logout",
-			type : "post",
-			async : false,
-			cache : false,
-			dataType : 'json',
-			success : function(data) {
-				if (data.success) {
-					var usertype = $("#log-out").attr("usertype");
-					// 清除成功后退出到登录界面
-					window.location.href = "/communityApp/local/login?usertype=" + usertype;
-					return false;
-				}
-			},
-			error : function(data, error) {
-				alert(error);
-			}
-		});
-	});
+$(function(){
+    $('#log-out').on('click', function(e){
+        e.preventDefault();
+        fetch('/communityApp/local/api/session', {credentials:'same-origin'})
+          .then(function(r){return r.json();})
+          .then(function(session){
+              return fetch('/communityApp/local/logout', {
+                  method:'POST',credentials:'same-origin',
+                  headers:{'X-CSRF-Token':session.csrfToken}
+              });
+          }).then(function(r){return r.json();})
+          .then(function(result){
+              if(result.success){window.location.href='/communityApp/local/login';}
+              else {alert(result.message||'Unable to sign out.');}
+          }).catch(function(){alert('Unable to sign out.');});
+    });
 });

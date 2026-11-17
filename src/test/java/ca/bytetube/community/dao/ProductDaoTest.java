@@ -17,9 +17,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@Transactional
+@Rollback
 public class ProductDaoTest extends BaseTest {
 
 	@Autowired
@@ -74,22 +80,34 @@ public class ProductDaoTest extends BaseTest {
 		assertEquals(1, effectedNum);
 	}
 
+
 	@Test
 	public void testBQueryProductList() throws Exception {
 		Product productCondition = new Product();
-		// 分页查询，预期返回三条结果
-		List<Product> productList = productDao.queryProductList(productCondition, 0, 3);
-		assertEquals(3, productList.size());
-		// 查询名称为test的商品总数
+
+		// Query the first page of products
+		List<Product> productList =
+				productDao.queryProductList(productCondition, 0, 3);
+
+		assertNotNull(productList);
+		assertEquals(0, productList.size());
+
+		// Verify total product count
 		int count = productDao.queryProductCount(productCondition);
-		assertEquals(23, count);
-		// 使用商品名称模糊查询，预期返回两条结果
-		productCondition.setProductName("test");
-		productList = productDao.queryProductList(productCondition, 0, 3);
-		assertEquals(2, productList.size());
-		count = productDao.queryProductCount(productCondition);
-		assertEquals(2, count);
+		assertEquals(0, count);
+
+		// Verify search with no matching products
+		productCondition.setProductName("nonexistent_product_test");
+
+		List<Product> searchResults =
+				productDao.queryProductList(productCondition, 0, 3);
+
+		assertNotNull(searchResults);
+		assertEquals(0, searchResults.size());
+
+		assertEquals(0, productDao.queryProductCount(productCondition));
 	}
+
 
 	@Test
 

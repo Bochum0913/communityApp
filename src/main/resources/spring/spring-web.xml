@@ -67,4 +67,12 @@
 
 
 	</mvc:interceptors>-->
+
+    <!-- Require a signed-in merchant and verify shop ownership for admin routes. -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/shopadmin/**" />
+            <bean class="ca.bytetube.communityApp.web.shopadmin.ShopAccessInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

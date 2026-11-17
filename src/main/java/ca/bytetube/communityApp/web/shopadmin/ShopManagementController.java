@@ -42,7 +42,7 @@ public class ShopManagementController {
 
 	@RequestMapping(value = "/getshopmanagementinfo", method = RequestMethod.GET)
 	@ResponseBody
-	//当不经过店铺列表，直接访问这个页面时，则重定向到shoplist中，如果之前有登录信息，则正常访问页面
+ // Implementation note.
 	private Map<String, Object> getShopManagementInfo(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		long shopId = HttpServletRequestUtil.getLong(request, "shopId");
@@ -71,18 +71,18 @@ public class ShopManagementController {
 	private Map<String, Object> getShopList(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<>();
 
-//		//todo 由于目前没有实现login，所以先设定默认值
-		PersonInfo user = new PersonInfo();
-		user.setUserId(1L);
-		user.setName("test");
-		request.getSession().setAttribute("user",user);
-		user = (PersonInfo) request.getSession().getAttribute("user");
-		try {
+PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
+        if (user == null) {
+            modelMap.put("success", false);
+            modelMap.put("errMsg", "Please sign in first.");
+            return modelMap;
+        }
+        try {
 			Shop shopCondition = new Shop();
 			shopCondition.setOwner(user);
 			ShopExecution se = shopService.getShopList(shopCondition, 0, 100);
 			modelMap.put("shopList", se.getShopList());
-			// 列出店铺成功之后，将店铺放入session中作为权限验证依据，即该帐号只能操作它自己的店铺
+   // Implementation note.
 			request.getSession().setAttribute("shopList", se.getShopList());
 			modelMap.put("user", user);
 			modelMap.put("success", true);
@@ -101,7 +101,7 @@ public class ShopManagementController {
 			modelMap.put("errMsg", "error verify Code");
 			return modelMap;
 		}
-		// 1.接收并转化相应的参数，包括店铺信息以及图片信息
+  // Implementation note.
 		String shopStr = HttpServletRequestUtil.getString(request, "shopStr");
 		ObjectMapper mapper = new ObjectMapper();
 		Shop shop = null;
@@ -119,7 +119,7 @@ public class ShopManagementController {
 			MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
 			shopImg = (CommonsMultipartFile) multipartHttpServletRequest.getFile("shopImg");
 		}
-		// 2.修改店铺信息
+  // Implementation note.
 		if (shop != null && shop.getShopId() != null) {
 			ShopExecution se;
 			try {
@@ -205,9 +205,9 @@ public class ShopManagementController {
 			return modelMap;
 		}
 
-		// 1.接收并转化相应的参数，包括店铺信息以及图片信息
+  // Implementation note.
 		String shopStr = HttpServletRequestUtil.getString(request, "shopStr");
-		ObjectMapper mapper = new ObjectMapper();//json转object
+		ObjectMapper mapper = new ObjectMapper();
 		Shop shop = null;
 		try {
 			shop = mapper.readValue(shopStr, Shop.class);
@@ -227,9 +227,9 @@ public class ShopManagementController {
 			return modelMap;
 		}
 
-		// 2.注册店铺
+  // Implementation note.
 		if (shop != null && shopImg != null) {
-			//前端数据不可靠，不通过ownerId得到owner，而从session中获取（如果用户登录了，session中会有user信息）
+   // Implementation note.
 			PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
 
 			//PersonInfo owner = new PersonInfo();
@@ -241,7 +241,7 @@ public class ShopManagementController {
 				se = shopService.addShop(shop, imageHolder);
 				if (se.getState() == ShopStateEnum.CHECK.getState()) {
 					modelMap.put("success", true);
-					// 该用户可以操作的店铺列表
+     // Implementation note.
 					@SuppressWarnings("unchecked")
 					List<Shop> shopList = (List<Shop>) request.getSession().getAttribute("shopList");
 					if (shopList == null || shopList.size() == 0) {

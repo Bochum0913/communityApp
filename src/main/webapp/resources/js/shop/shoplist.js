@@ -24,7 +24,7 @@ $(function() {
 		var html = '';
 		data.map(function(item, index) {
 			html += '<div class="row row-shop"><div class="col-40">'
-					+ item.shopName + '</div><div class="col-40">'
+					+ $('<div/>').text(item.shopName || '').html() + '</div><div class="col-40">'
 					+ shopStatus(item.enableStatus)
 					+ '</div><div class="col-20">'
 					+ goShop(item.enableStatus, item.shopId) + '</div></div>';
@@ -35,18 +35,18 @@ $(function() {
 
 	function shopStatus(status) {
 		if (status == 0) {
-			return 'pending';
+			return '<span class="ca-shop-status pending">Pending</span>';
 		} else if (status == -1) {
-			return 'illegal';
+			return '<span class="ca-shop-status rejected">Rejected</span>';
 		} else if (status == 1) {
-			return 'passed';
+			return '<span class="ca-shop-status approved">Approved</span>';
 		}
 	}
 
 	function goShop(status, id) {
 		if (status == 1) {
 			return '<a href="/communityApp/shopadmin/shopmanagement?shopId=' + id
-					+ '">go to</a>';
+					+ '">Manage Shop</a>';
 		} else {
 			return '';
 		}

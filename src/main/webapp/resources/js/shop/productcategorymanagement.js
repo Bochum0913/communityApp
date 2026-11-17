@@ -1,104 +1,82 @@
 $(function () {
-
-    var listUrl = '/communityApp/shopadmin/getproductcategorylist';
-    var addUrl = '/communityApp/shopadmin/addproductcategorys';
-    var deleteUrl = '/communityApp/shopadmin/removeproductcategory';
-
-    getList();
-
-    function getList() {
-        $.getJSON(
-            listUrl,
-            function (data) {
-                if (data.success) {
-                    var dataList = data.data;
-                    $('.category-wrap').html('');
-                    var tempHtml = '';
-                    dataList
-                        .map(function (item, index) {
-                            tempHtml += ''
-                                + '<div class="row row-product-category now">'
-                                + '<div class="col-33 product-category-name">'
-                                + item.productCategoryName
-                                + '</div>'
-                                + '<div class="col-33">'
-                                + item.priority
-                                + '</div>'
-                                + '<div class="col-33"><a href="#" class="button delete" data-id="'
-                                + item.productCategoryId
-                                + '">del</a></div>'
-                                + '</div>';
-                        });
-                    $('.category-wrap').append(tempHtml);
-                }
-            });
+    var root = '/communityApp/shopadmin/';
+    function notify(message) { $.toast(message); }
+    function validPriority(value) {
+        return /^\d+$/.test(String(value)) && Number(value) <= 1000000;
     }
-
-    $('#new').click(
-            function () {
-                var tempHtml = '<div class="row row-product-category temp">'
-                    + '<div class="col-33"><input class="category-input category" type="text" placeholder="product category name"></div>'
-                    + '<div class="col-33"><input class="category-input priority" type="number" placeholder="priority"></div>'
-                    + '<div class="col-33"><a href="#" class="button delete">del</a></div>'
-                    + '</div>';
-                $('.category-wrap').append(tempHtml);
+    function loadCategories() {
+        $.getJSON(root + 'getproductcategorylist', function (result) {
+            if (!result.success) { notify(result.errMsg || 'Unable to load categories'); return; }
+            var $wrap = $('.category-wrap').empty();
+            (result.data || []).forEach(function (category) {
+                var $row = $('<div class="row row-product-category now"></div>')
+                    .attr('data-id', category.productCategoryId);
+                $('<div class="col-33 product-category-name"></div>')
+                    .text(category.productCategoryName || '').appendTo($row);
+                var $priorityCell = $('<div class="col-33"></div>').appendTo($row);
+                $('<input type="number" class="category-input priority" min="0" max="1000000">')
+                    .val(category.priority).attr('data-original', category.priority)
+                    .appendTo($priorityCell);
+                var $action = $('<div class="col-33"></div>').appendTo($row);
+                $('<a href="#" class="button save-priority">Save</a>').appendTo($action);
+                $('<a href="#" class="button delete">Delete</a>').appendTo($action);
+                $wrap.append($row);
             });
-
-    $('#submit').click(function () {
-        var tempArr = $('.temp');
-        var productCategoryList = [];
-        tempArr.map(function (index, item) {
-            var tempObj = {};
-            tempObj.productCategoryName = $(item).find('.category').val();
-            tempObj.priority = $(item).find('.priority').val();
-            if (tempObj.productCategoryName && tempObj.priority) {
-                productCategoryList.push(tempObj);
-            }
+        }).fail(function () { notify('Unable to load categories'); });
+    }
+    loadCategories();
+    $('#new').on('click', function (event) {
+        event.preventDefault();
+        var $row = $('<div class="row row-product-category temp"></div>');
+        $('<div class="col-33"><input class="category-input category" type="text" placeholder="Category name" maxlength="100"></div>').appendTo($row);
+        $('<div class="col-33"><input class="category-input priority" type="number" min="0" max="1000000" placeholder="Priority"></div>').appendTo($row);
+        $('<div class="col-33"><a href="#" class="button delete">Remove</a></div>').appendTo($row);
+        $('.category-wrap').append($row);
+    });
+    $('#submit').on('click', function (event) {
+        event.preventDefault();
+        var categories = [], valid = true;
+        $('.category-wrap .temp').each(function () {
+            var name = $(this).find('.category').val().trim();
+            var priority = $(this).find('.priority').val();
+            if (!name || !validPriority(priority)) { valid = false; return; }
+            categories.push({ productCategoryName: name, priority: Number(priority) });
         });
-        $.ajax({
-            url: addUrl,
-            type: 'POST',
-            data: JSON.stringify(productCategoryList),
-            contentType: 'application/json',
-            success: function (data) {
-                if (data.success) {
-                    $.toast('submitted successfully！');
-                    getList();
-                } else {
-                    $.toast('failure to submit！');
-                }
-            }
+        if (!valid) { notify('Enter a category name and a priority from 0 to 1000000'); return; }
+        if (!categories.length) { notify('Add a category first'); return; }
+        $.ajax({ url: root + 'addproductcategorys', type: 'POST',
+            data: JSON.stringify(categories), contentType: 'application/json', dataType: 'json',
+            success: function (result) { if (result.success) { notify('Categories added'); loadCategories(); }
+                else { notify(result.errMsg || 'Unable to add categories'); } },
+            error: function () { notify('Network error'); }
         });
     });
-
-    //temp 表示新增的 now表示已经添加的
-    $('.category-wrap').on('click', '.row-product-category.temp .delete',
-        function (e) {
-            console.log($(this).parent().parent());
-            $(this).parent().parent().remove();
-
+    $('.category-wrap').on('click', '.temp .delete', function (event) {
+        event.preventDefault(); $(this).closest('.temp').remove();
+    }).on('click', '.now .save-priority', function (event) {
+        event.preventDefault();
+        var $row = $(this).closest('.now');
+        var $input = $row.find('.priority');
+        var value = $input.val();
+        if (!validPriority(value)) { notify('Priority must be from 0 to 1000000'); return; }
+        var $button = $(this).addClass('disabled');
+        $.ajax({ url: root + 'modifyproductcategory', type: 'POST', dataType: 'json',
+            data: { productCategoryId: $row.attr('data-id'), priority: Number(value) },
+            success: function (result) { if (result.success) { notify('Priority updated'); loadCategories(); }
+                else { notify(result.errMsg || 'Unable to update priority'); } },
+            error: function () { notify('Network error'); },
+            complete: function () { $button.removeClass('disabled'); }
         });
-
-    $('.category-wrap').on('click', '.row-product-category.now .delete',
-        function (e) {
-            var target = e.currentTarget;
-            $.confirm('Yes?', function () {
-                $.ajax({
-                    url: deleteUrl,
-                    type: 'POST',
-                    data: {
-                        productCategoryId: target.dataset.id
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.success) {
-                            $.toast('delete successfully！');
-                            getList();
-                        } else {
-                            $.toast('failure to delete！');
-                        }
-                    }
-                });
+    }).on('click', '.now .delete', function (event) {
+        event.preventDefault();
+        var categoryId = $(this).closest('.now').attr('data-id');
+        $.confirm('Delete this category? Products in this category will become uncategorized.', function () {
+            $.ajax({ url: root + 'removeproductcategory', type: 'POST', dataType: 'json',
+                data: { productCategoryId: categoryId },
+                success: function (result) { if (result.success) { notify('Category deleted'); loadCategories(); }
+                    else { notify(result.errMsg || 'Unable to delete category'); } },
+                error: function () { notify('Network error'); }
             });
         });
+    });
 });
